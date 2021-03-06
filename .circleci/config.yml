@@ -2,6 +2,8 @@ version: 2.1
 on: 
   push: 
   branches: main
+  environment:
+      IMAGE_NAME: Blya:$CIRCLE_SHA1
 #  tag: $CIRCLE_SHA1
 jobs:
   build:
@@ -12,4 +14,4 @@ jobs:
           name: Hello World
           command: |
             echo 'Hello World!'
-            echo $IMAGE_NAME
+            echo "$IMAGE_NAME"
