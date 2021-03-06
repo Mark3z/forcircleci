@@ -2,7 +2,7 @@ version: 2.1
 on: 
   push: 
   branches: main
-  tag: $GITHUB_SHA
+#  tag: $GITHUB_SHA
 jobs:
   build:
     docker:
