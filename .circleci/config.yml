@@ -9,6 +9,7 @@ on:
 #  tag: $CIRCLE_SHA1
 jobs:
   build:
+    executor: docker-publisher
     steps:
       - run:
           name: Build Docker Image
