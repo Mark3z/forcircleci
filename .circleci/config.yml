@@ -6,13 +6,15 @@ executors:
   docker-publisher:
     environment:
       IMAGE_NAME: Blya
-  docker:
+    docker:
       - image: python 
 #  tag: $CIRCLE_SHA1
 jobs:
   build:
     executor: docker-publisher
     steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build Docker Image
           command: |
