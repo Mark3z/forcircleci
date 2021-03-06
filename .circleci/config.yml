@@ -7,6 +7,6 @@ jobs:
       - run:
           name: Hello World
           command: |
-            print 'Hello World!'
+            echo 'Hello World!'
             
       
