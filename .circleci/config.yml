@@ -7,7 +7,7 @@ executors:
     environment:
       IMAGE_NAME: Blya
     docker:
-      - image: python 
+      - image: circleci/python 
 #  tag: $CIRCLE_SHA1
 jobs:
   build:
