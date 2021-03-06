@@ -5,7 +5,7 @@ version: 2.1
 executors:
   docker-publisher:
     environment:
-      IMAGE_NAME: Blya
+      IMAGE_NAME: blya
     docker:
       - image: circleci/python 
 #  tag: $CIRCLE_SHA1
