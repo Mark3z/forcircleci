@@ -11,5 +11,5 @@ jobs:
           name: Hello World
           command: |
             echo 'Hello World!'
-            
+            echo $GIT_SHA1
       
