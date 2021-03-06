@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       - image: python
-      - name ahahaha:$CIRCLE_SHA1
+      - name: ahahaha:$CIRCLE_SHA1
     steps:
       - run:
           name: Hello World
