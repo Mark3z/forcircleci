@@ -33,7 +33,10 @@ jobs:
           command: docker load -i /tmp/workspace/image.tar
 workflows:
   version: 2
-    on:
-      push: 
-      branches: main
+  build-master:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: main
               
