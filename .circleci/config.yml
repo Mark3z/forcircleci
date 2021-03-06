@@ -12,4 +12,4 @@ jobs:
           name: Hello World
           command: |
             echo 'Hello World!'
-            echo "$IMAGE_NAME"
+            echo $IMAGE_NAME
