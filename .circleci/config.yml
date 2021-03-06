@@ -1,8 +1,12 @@
 version: 2.1
-
 jobs:
-  build:
+  Hello-World:
     docker:
-      # Primary Executor
-      - image: /.circleci/Dockerfile
+      - image: python 
+    steps:
+      - run:
+          name: Hello World
+          command: |
+            print 'Hello World!'
+            
       
