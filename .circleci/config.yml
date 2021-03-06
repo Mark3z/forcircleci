@@ -6,9 +6,10 @@ on:
 jobs:
   build:
     docker:
-      - image: python
       - name: ahahaha
-    steps:
+      - image: python
+      
+      steps:
       - run:
           name: Hello World
           command: |
