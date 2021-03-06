@@ -3,15 +3,14 @@ on:
   push: 
   branches: main
   environment:
-      IMAGE_NAME: Blya:$CIRCLE_SHA1
+      IMAGE_NAME: Blya
+  docker:
+      - image: python 
 #  tag: $CIRCLE_SHA1
 jobs:
   build:
-    docker:
-      - image: python 
     steps:
       - run:
-          name: Hello World
+          name: Build Docker Image
           command: |
-            echo 'Hello World!'
-            echo "$IMAGE_NAME"
+            docker build -t $IMAGE_NAME:$CIRCLE_SHA1 .
