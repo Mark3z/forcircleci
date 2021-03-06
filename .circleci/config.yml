@@ -1,14 +1,10 @@
 version: 2.1
-#on: 
- # push: 
- # branches: main
 executors:
   docker-publisher:
     environment:
       IMAGE_NAME: blya
     docker:
-      - image: circleci/python 
-#  tag: $CIRCLE_SHA1
+      - image: circleci/python
 jobs:
   build:
     executor: docker-publisher
@@ -16,6 +12,36 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: Build Docker Image
+          name: Build Docker image
           command: |
             docker build -t $IMAGE_NAME:$CIRCLE_SHA1 .
+      - run:
+          name: Archive Docker image
+          command: docker save -o image.tar $IMAGE_NAME
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./image.tar
+  publish-latest:
+    executor: docker-publisher
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - setup_remote_docker
+      - run:
+          name: Load archived Docker image
+          command: docker load -i /tmp/workspace/image.tar
+workflows:
+  version: 2
+  build-master:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
+      - publish-latest:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
